@@ -1,0 +1,37 @@
+<div class="container">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-12 mb-3">
+        <input type="text" formControlName="firstName" placeholder="First Name">
+        <div *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched" class="text-danger">
+          First Name is required
+        </div>
+      </div>
+      <div class="col-12 mb-3">
+        <input type="text" formControlName="lastName" placeholder="Last Name">
+        <div *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched" class="text-danger">
+          Last Name is required
+        </div>
+      </div>
+      <div class="col-12 mb-3">
+        <input type="text" formControlName="address" placeholder="Address">
+        <!-- Add validation message for address if needed -->
+      </div>
+      <div class="col-12 mb-3">
+        <input type="email" formControlName="email" placeholder="Email">
+        <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched" class="text-danger">
+          Please enter a valid email address
+        </div>
+      </div>
+      <div class="col-12 mb-3">
+        <input type="text" formControlName="phone" placeholder="Phone">
+        <div *ngIf="userForm.get('phone')?.invalid && userForm.get('phone')?.touched" class="text-danger">
+          Please enter a valid phone number
+        </div>
+      </div>
+      <div class="col-12">
+        <button [disabled]="!userForm.valid" type="submit">{{ editingUser ? 'Update' : 'Add' }}</button>
+      </div>
+    </div>
+  </form>
+</div>
